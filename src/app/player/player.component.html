@@ -1,0 +1,33 @@
+<h2 nz-typography><b>{{ player.name }}</b>  <i nz-icon nzType="flag" nzTheme="fill"></i> Rank?/{{player.elo}}</h2>
+<h5  nz-typography>Resultat Ave. : {{player.ave}}</h5>
+<nz-table
+      nzShowSizeChanger
+      [nzData]="player.results"
+      [nzFrontPagination]="false"
+      [nzLoading]="loading"
+      [nzTotal]="total"
+      [nzPageSize]="pageSize"
+      [nzPageIndex]="pageIndex"
+      (nzQueryParams)="onQueryParamsChange($event)"
+    >
+      <thead>
+        <tr>
+          <th nzColumnKey="position" >COTD Name</th>
+          <th nzColumnKey="evolution">Division</th>
+          <th>Result in div</th>
+          <th>Global Result</th>
+          <th>ELO after match</th>
+          <th nzColumnKey="Ave" [nzSortFn]="true">Delta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of player.results" >
+          <td nzAlign="center">{{ result.tournoi_name }}</td>
+          <td nzAlign="center"> Division ?</td>  
+          <td>{{result.position}}</td>
+          <td>{{result.position}}</td>
+          <td>{{ result.elo }}</td>
+          <td>Delta</td>
+        </tr>
+      </tbody>
+    </nz-table>

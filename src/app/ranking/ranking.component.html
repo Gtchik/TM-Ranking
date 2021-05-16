@@ -1,0 +1,36 @@
+<nz-table
+      nzShowSizeChanger
+      [nzData]="listOfRaking"
+      [nzFrontPagination]="false"
+      [nzLoading]="loading"
+      [nzTotal]="total"
+      [nzPageSize]="pageSize"
+      [nzPageIndex]="pageIndex"
+      (nzQueryParams)="onQueryParamsChange($event)"
+    >
+      <thead>
+        <tr>
+          <th nzColumnKey="position" [nzSortFn]="true" nzWidth="1vw">N°</th>
+          <th nzColumnKey="evolution" [nzSortFn]="true" nzWidth="1vw">Evolution</th>
+          <th>Nickname</th>
+          <th>Rank</th>
+          <th>ELO</th>
+          <th nzColumnKey="Ave" [nzSortFn]="true">Ave.</th>
+          <th nzColumnKey="NbGame" [nzSortFn]="true">NbGame</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of listOfRaking" >
+          <td nzAlign="center">{{ player.position }}</td>
+          <td nzAlign="center"> 
+               <span nz-typography nzType="success" *ngIf="player.evolution>0"><i nz-icon nzType="up" nzTheme="outline"></i> {{player.evolution}}</span>
+               <span nz-typography nzType="danger" *ngIf="player.evolution<0"><i nz-icon nzType="down" nzTheme="outline"></i> {{player.evolution}}</span>
+               <span nz-typography nzType="secondary" *ngIf="player.evolution==0"><i nz-icon nzType="minus" nzTheme="outline"></i></span></td>
+          <td><a nz-button nzType="link" (click)="onNavigate('/player/',player.u_id)">{{ player.name }}</a></td>
+          <td>Rank?</td>
+          <td>{{ player.elo }}</td>
+          <td>{{ player.ave }}</td>
+          <td>{{ player.nb_game }}</td>
+        </tr>
+      </tbody>
+    </nz-table>

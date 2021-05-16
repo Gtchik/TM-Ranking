@@ -1,0 +1,9 @@
+<h2 nz-typography><i nz-icon nzType="search" nzTheme="outline"></i> Research for : {{name}}</h2>
+<nz-list nzItemLayout="horizontal" [nzLoading]="loading">
+  <nz-list-item *ngFor="let player of userList">
+      <nz-list-item-meta-title>
+        <p nz-typography><a (click)="onNavigate('/player/',player.u_id)"><b>{{ player.name }}</b></a>  <i nz-icon nzType="flag" nzTheme="fill"></i> Rank?/{{player.position}}</p>
+      </nz-list-item-meta-title>
+  </nz-list-item>
+  
+</nz-list>
