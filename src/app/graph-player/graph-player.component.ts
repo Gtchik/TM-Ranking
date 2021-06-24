@@ -93,8 +93,8 @@ export class GraphPlayerComponent implements OnInit{
         curve: "smooth"
       },
       title: {
-        text: "Average High & Low Temperature",
-        align: "left"
+        text: "Evolution of your rank",
+        align: "center"
       },
       grid: {
         borderColor: "#e7e7e7",
@@ -107,17 +107,14 @@ export class GraphPlayerComponent implements OnInit{
         size: 1
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-        title: {
-          text: "Month"
-        }
+        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
       },
       yaxis: {
         title: {
           text: "Rank"
         },
         min: 1,
-        max: 500
+        max: 500,
       },
       legend: {
         position: "top",
@@ -162,7 +159,14 @@ export class GraphPlayerComponent implements OnInit{
       data: dataResult
     }];
     this.chartOptions.xaxis = {
-      categories: jourCOTD
+      categories: jourCOTD,
+      position: 'top'
+    }
+    this.chartOptions.yaxis = {
+      max : (~~(Math.max(...dataResult)/64)+1)*64,
+      min : (~~(Math.min(...dataResult)/64))*64,
+      tickAmount: (((~~(Math.max(...dataResult)/64)+1)*64)-((~~(Math.min(...dataResult)/64))*64))/64,
+      reversed: true
     }
   };
 
