@@ -21,6 +21,8 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { PlayerComponent } from './player/player.component';
 import { SearchComponent } from './search/search.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { GraphPlayerComponent } from './graph-player/graph-player.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 registerLocaleData(fr);
 
@@ -29,7 +31,8 @@ registerLocaleData(fr);
     AppComponent,
     RankingComponent,
     PlayerComponent,
-    SearchComponent
+    SearchComponent,
+    GraphPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ registerLocaleData(fr);
     NzButtonModule,
     NzInputModule,
     NzToolTipModule,
-    NzListModule
+    NzListModule,
+    NgApexchartsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

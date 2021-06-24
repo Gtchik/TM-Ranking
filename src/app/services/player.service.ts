@@ -11,7 +11,7 @@ export class PlayerService {
     pageNumber: number=0,
     pageSize: number=8
   ): Observable<Player> {
-    console.log(pageSize);
+    /*console.log(pageSize);*/
     
     const ApiUrl ='http://trackmania-ranking.ml/api/player/'+`${u_id}`+'/'+`${pageNumber-1}`+'/'+`${pageSize}`;
     return this.http.get<Player >(`${ApiUrl}`);

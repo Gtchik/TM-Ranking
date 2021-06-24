@@ -4,6 +4,7 @@ import { NzTableQueryParams } from 'ng-zorro-antd/table';
 import { Player } from '../models/Player.model';
 import { PlayerService } from '../services/player.service';
 
+
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
@@ -56,7 +57,7 @@ export class PlayerComponent implements OnInit {
   }
   
   onQueryParamsChange(params: NzTableQueryParams): void {
-    console.log(params);
+    /*console.log(params);*/
     const { pageSize, pageIndex } = params;
     this.loadDataFromServer(pageIndex, pageSize);
   }
