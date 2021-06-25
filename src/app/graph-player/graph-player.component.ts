@@ -64,7 +64,7 @@ export class GraphPlayerComponent implements OnInit{
       series: [
         {
           name: "Result",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+          data: []
         }
       ],
       chart: {
@@ -79,7 +79,7 @@ export class GraphPlayerComponent implements OnInit{
           opacity: 0.2
         },
         zoom: {
-          enabled: false
+          enabled: true
         },
         toolbar: {
           show: false
@@ -107,7 +107,7 @@ export class GraphPlayerComponent implements OnInit{
         size: 1
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
+        categories: []
       },
       yaxis: {
         title: {

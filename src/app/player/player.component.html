@@ -26,8 +26,8 @@
       <tbody>
         <tr *ngFor="let result of player.results" >
           <td nzAlign="center">{{ result.tournoi_name }}</td>
-          <td nzAlign="center"> Division ?</td>  
-          <td>{{result.position}}</td>
+          <td nzAlign="center">{{JeSuisCeil(result.position/64)}}</td>
+          <td>{{result.position%64}}</td>
           <td>{{result.position}}</td>
           <td>{{ result.elo }}</td>
           <td>Delta</td>
