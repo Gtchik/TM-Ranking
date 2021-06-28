@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
-import { resourceLimits } from 'node:worker_threads';
 import { Player } from '../models/Player.model';
 import { PlayerService } from '../services/player.service';
-
 
 @Component({
   selector: 'app-player',
@@ -31,7 +29,6 @@ export class PlayerComponent implements OnInit {
   total = 1;
   pageSize = 20;
   pageIndex = 1;  
-  position_div: any[] = [];
 
 
   constructor( private route: ActivatedRoute, private router: Router, private playerService: PlayerService ) { }
@@ -59,13 +56,9 @@ export class PlayerComponent implements OnInit {
   }
   
   onQueryParamsChange(params: NzTableQueryParams): void {
-    /*console.log(params);*/
+    console.log(params);
     const { pageSize, pageIndex } = params;
     this.loadDataFromServer(pageIndex, pageSize);
-  }
-
-  JeSuisCeil(variable: number,){
-    return Math.floor(variable)+1;
   }
 
   ngOnInit(): void {

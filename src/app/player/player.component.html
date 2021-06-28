@@ -1,8 +1,5 @@
 <h2 nz-typography><b>{{ player.name }}</b>  <i nz-icon nzType="flag" nzTheme="fill"></i> Rank?/{{player.elo}}</h2>
 <h5  nz-typography>Resultat Ave. : {{player.ave}}</h5>
-
-<app-graph-player></app-graph-player>
-
 <nz-table
       nzShowSizeChanger
       [nzData]="player.results"
@@ -26,8 +23,8 @@
       <tbody>
         <tr *ngFor="let result of player.results" >
           <td nzAlign="center">{{ result.tournoi_name }}</td>
-          <td nzAlign="center">{{JeSuisCeil(result.position/64)}}</td>
-          <td>{{result.position%64}}</td>
+          <td nzAlign="center"> Division ?</td>  
+          <td>{{result.position}}</td>
           <td>{{result.position}}</td>
           <td>{{ result.elo }}</td>
           <td>Delta</td>
