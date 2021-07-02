@@ -1,5 +1,8 @@
 <h2 nz-typography><b>{{ player.name }}</b>  <i nz-icon nzType="flag" nzTheme="twotone"></i> Rank? / {{player.elo}} pts</h2>
 <h5  nz-typography>Resultat Ave. : {{player.ave}}</h5>
+
+<app-graph-player></app-graph-player>
+
 <nz-table
       nzShowSizeChanger
       [nzData]="player.results"

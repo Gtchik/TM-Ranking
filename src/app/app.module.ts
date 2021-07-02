@@ -22,6 +22,8 @@ import { PlayerComponent } from './player/player.component';
 import { SearchComponent } from './search/search.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { GraphPlayerComponent } from './graph-player/graph-player.component';
 
 registerLocaleData(fr);
 
@@ -30,7 +32,8 @@ registerLocaleData(fr);
     AppComponent,
     RankingComponent,
     PlayerComponent,
-    SearchComponent
+    SearchComponent,
+    GraphPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,10 @@ registerLocaleData(fr);
     NzInputModule,
     NzToolTipModule,
     NzListModule,
-    NzLayoutModule
+    NzLayoutModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]
