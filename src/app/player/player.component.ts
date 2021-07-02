@@ -58,7 +58,7 @@ export class PlayerComponent implements OnInit {
   onQueryParamsChange(params: NzTableQueryParams): void {
     console.log(params);
     const { pageSize, pageIndex } = params;
-    this.loadDataFromServer(pageIndex, pageSize+1);
+    this.loadDataFromServer(pageIndex, pageSize);
   }
 
   createDelta(index: number,){

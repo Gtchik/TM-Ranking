@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of player.results.slice(0,-1); let isIndex = index" >
+        <tr *ngFor="let result of player.results; let isIndex = index" >
           <td nzAlign="center">{{ result.tournoi_name }}</td>
           <td nzAlign="center">{{JeSuisCeil(result.position/64)}}</td>
           <td>{{result.position%64}}</td>

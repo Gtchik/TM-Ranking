@@ -20,6 +20,21 @@ export class SearchComponent implements OnInit {
     this.router.navigate([endpoint+id]);
   }
 
+  nbOrdinal(number:number){
+    if(number == 1 || number == 21 || number == 31){
+      return "st"
+    }
+    else if(number == 2 || number == 22){
+      return "nd"
+    }
+    else if(number == 3 || number == 23){
+      return "rd"
+    }
+    else{
+      return "th"
+    }
+  }
+
   ngOnInit(): void {
     this.name = this.route.snapshot.paramMap.get('name');
     this.route.params.subscribe(
