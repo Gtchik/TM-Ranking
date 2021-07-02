@@ -1,13 +1,8 @@
 <h2 nz-typography><b>{{ player.name }} </b>| {{player.position}}{{nbOrdinal(player.position)}} <span style="font-weight: 100;">with</span> {{player.elo}} pts</h2>
 
-<div nz-row [nzGutter]="6" nzAlign="middle">  
-  
-  <div class="cardInformation" nz-col [nzSpan]="4">
-    <!-- <nz-card [nzBordered]="false" nzTitle="Rank? / {{player.elo}} pts">
-    <p>Average : <b>{{player.ave}}</b></p>
-    <p>Nb Cotd : <b>{{player.nb_game}}</b></p>
-    <p>Best positon : <b></b></p>
-    </nz-card> -->
+<div nz-row [nzGutter]="6" nzAlign="middle" nzJustify="center" >  
+  <!-- nzXs="" nzSm="750px" nzMd="970px" nzLg="1170" -->
+  <div class="cardInformation" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6" nzXl="4">
     <nz-table
           nzNoResult=" "
           nzShowSizeChanger>
@@ -40,7 +35,7 @@
     </nz-table>
   </div>
 
-  <div class="chart" nz-col [nzSpan]="20">
+  <div class="chart" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="18" nzXl="20">
     <app-graph-player></app-graph-player>
   </div>
 </div>
