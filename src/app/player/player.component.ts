@@ -72,7 +72,7 @@ export class PlayerComponent implements OnInit {
       else if(Math.sign(delta) < 0) {
         return delta
       }
-      else if(delta = 0){
+      else if(delta == 0){
         return delta
       }
       else {
@@ -82,7 +82,6 @@ export class PlayerComponent implements OnInit {
     else {
       return delta
     }
-    
   }
 
   JeSuisCeil(variable: number,){
