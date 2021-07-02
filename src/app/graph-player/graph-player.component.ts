@@ -3,13 +3,15 @@ import { Player } from '../models/Player.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PlayerService } from '../services/player.service';
 
+
 @Component({
   selector: 'app-graph-player',
   templateUrl: './graph-player.component.html',
   styleUrls: ['./graph-player.component.scss']
 })
 export class GraphPlayerComponent implements OnInit {
-  options: any;
+  optionsCOTD: any;
+  optionsELO: any;
   loading:boolean=true;
   player:Player={
     u_id: '',
@@ -30,6 +32,7 @@ export class GraphPlayerComponent implements OnInit {
 
   xAxisData: any[] = [];
   cotdResult: any[] = [];
+  eloResult: any[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private playerService: PlayerService ) { }
 
@@ -58,6 +61,7 @@ export class GraphPlayerComponent implements OnInit {
     const reverseResults = this.player.results.reverse()
     for (const result of reverseResults){
         this.cotdResult.push(result.position),
+        this.eloResult.push(result.elo)
         this.xAxisData.push(result.tournoi_name.substr(result.tournoi_name.length - 10))
         }
       }
@@ -67,7 +71,7 @@ export class GraphPlayerComponent implements OnInit {
 }
 
   createChart():void{
-    this.options = {
+    this.optionsCOTD = {
       legend: {
         data: ['cotdResult'],
         align: 'left',
@@ -101,17 +105,79 @@ export class GraphPlayerComponent implements OnInit {
         min:0,
         max:(~~(Math.max(...this.cotdResult)/64)+1)*64,
         interval: 64,
-        reversed: true,
+        inverse: false,
       },
       series: [
         {
-          name: 'Result :',
+          name: 'COTD',
           type: 'line',
-          areaStyle: { normal: {} },
+          lineStyle:{ color:"#1890ff" },
+          areaStyle: { color:"#1890ff" },
           data: this.cotdResult,
-        }
+          markPoint: {
+            data: [
+                {type: 'max'},
+                {type: 'min'}
+            ]
+          }
+        },
       ],
       animationEasing: 'cubicInOut',
+    },
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  this.optionsELO = {
+    legend: {
+      data: ['cotdResult'],
+      align: 'left',
+    },
+    tooltip: {
+      trigger: 'axis',
+    },
+    dataZoom: [
+      {
+          id: 'dataZoomX',
+          type: 'inside',
+          xAxisIndex: [0],
+          filterMode: 'filter'
+      },
+      {
+          id: 'dataZoomY',
+          type: 'inside',
+          yAxisIndex: [0],
+          filterMode: 'empty'
+      }
+  ],
+    xAxis: {
+      data: this.xAxisData,
+      silent: false,
+      splitLine: {
+        show: false,
+      },
+    },
+    yAxis: {
+      type:"value",
+      min:Math.min(...this.eloResult),
+      max:Math.max(...this.eloResult),
+      splitNumber: 5,
+      reversed: true,
+    },
+    series: [
+      {
+        name: 'ELO',
+        type: 'line',
+        lineStyle:{ color:"#1890ff" },
+        areaStyle: { color:"#1890ff" },
+        data: this.eloResult,
+        markPoint: {
+          data: [
+              {type: 'max'},
+              {type: 'min'}
+          ]
+        },
+      },
+    ],
+    animationEasing: 'cubicInOut',
+    animationEasingUpdate: 'cubicInOut'
     }
   }
-  }
+}

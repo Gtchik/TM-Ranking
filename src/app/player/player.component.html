@@ -1,4 +1,4 @@
-<h2 nz-typography><b>{{ player.name }}</b>  <i nz-icon nzType="flag" nzTheme="twotone"></i> Rank? / {{player.elo}} pts</h2>
+<h2 nz-typography><b>{{ player.name }} </b>| {{player.position}}{{nbOrdinal(player.position)}} <span style="font-weight: 100;">with</span> {{player.elo}} pts</h2>
 
 <div nz-row [nzGutter]="6" nzAlign="middle">  
   
@@ -18,16 +18,20 @@
       </thead>
       <tbody>
         <tr>
-          <td>Average :</td>
-          <td><b>{{player.ave}}</b></td>
+          <td>Highest ELO reached:</td>
+          <td><b>{{bestResult("elo")}}</b></td>
         </tr>
         <tr>
-          <td>Nb of COTD :</td>
+          <td>Best result in COTD:</td>
+          <td><b>{{bestResult("score")}}{{nbOrdinal(bestResult("score"))}}</b></td>
+        </tr>
+        <tr>
+          <td>Average on COTD :</td>
+          <td><b>{{player.ave}}{{nbOrdinal(player.ave)}}</b></td>
+        </tr>
+        <tr>
+          <td>Nb of COTD played :</td>
           <td><b>{{player.nb_game}}</b></td>
-        </tr>
-        <tr>
-          <td>Best result :</td>
-          <td><b>yep</b></td>
         </tr>
         <tr>
           <td colspan="2"><a target="_blank" href="https://trackmania.io/#/player/{{player.u_id}}"><button nz-button nzType="primary" nzBlock ><i nz-icon nzType="heart" nzTheme="twotone" nzTwotoneColor="#33a0ff"></i>Trackmania.io Profil</button></a></td>

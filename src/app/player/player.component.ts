@@ -84,6 +84,39 @@ export class PlayerComponent implements OnInit {
     }
   }
 
+  bestResult(typeData:string){
+    var bestResult = Number.POSITIVE_INFINITY;
+    
+    for(const result of this.player.results){
+      if(typeData == "score"){
+        if(result.position < bestResult){
+          bestResult = result.position
+        }
+      }
+      else if(typeData == "elo"){
+        if(result.elo > bestResult || bestResult == Number.POSITIVE_INFINITY){
+          bestResult = result.elo
+        }
+      }
+    }
+    return bestResult
+  }
+
+  nbOrdinal(number:number){
+    if(number == 1 || number == 21 || number == 31){
+      return "st"
+    }
+    else if(number == 2 || number == 22){
+      return "nd"
+    }
+    else if(number == 3 || number == 23){
+      return "rd"
+    }
+    else{
+      return "th"
+    }
+  }
+
   JeSuisCeil(variable: number,){
     return Math.floor(variable)+1;
   }

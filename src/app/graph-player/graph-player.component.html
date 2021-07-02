@@ -1,1 +1,10 @@
-<div echarts [options]="options" class="demo-chart"></div>
+<div class="card-container">
+    <nz-tabset nzType="card">
+        <nz-tab nzTitle="COTD">
+            <div echarts [options]="optionsCOTD" class="demo-chart"></div>
+        </nz-tab>
+        <nz-tab nzTitle="ELO">
+            <div echarts [options]="optionsELO" class="demo-chart"></div>
+        </nz-tab>
+    </nz-tabset>
+</div>
