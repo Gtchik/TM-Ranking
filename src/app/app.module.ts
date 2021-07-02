@@ -24,6 +24,8 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { GraphPlayerComponent } from './graph-player/graph-player.component';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 
 registerLocaleData(fr);
 
@@ -52,7 +54,9 @@ registerLocaleData(fr);
     NzLayoutModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    NzCardModule,
+    NzAlertModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]
