@@ -62,19 +62,17 @@ export class PlayerComponent implements OnInit {
   }
 
   createDelta(index: number,){
-    var delta:number = 0
+    let delta:number = 0
     let nextIndex = index + 1;
     if(nextIndex < this.player.results.length){
       delta = this.player.results[index].elo - this.player.results[nextIndex].elo;
-      //console.log(delta)
-      console.log(Math.sign(delta))
       if(delta > 0){
         return delta
       }
-      else if(delta = 0){
+      else if(Math.sign(delta) < 0) {
         return delta
       }
-      else if(delta < 0) {
+      else if(delta = 0){
         return delta
       }
       else {
