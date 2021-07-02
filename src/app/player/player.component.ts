@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NzTableQueryParams } from 'ng-zorro-antd/table';
+import { NzTableQueryParams, NzThMeasureDirective } from 'ng-zorro-antd/table';
 import { Player } from '../models/Player.model';
 import { PlayerService } from '../services/player.service';
 
@@ -58,7 +58,37 @@ export class PlayerComponent implements OnInit {
   onQueryParamsChange(params: NzTableQueryParams): void {
     console.log(params);
     const { pageSize, pageIndex } = params;
-    this.loadDataFromServer(pageIndex, pageSize);
+    this.loadDataFromServer(pageIndex, pageSize+1);
+  }
+
+  createDelta(index: number,){
+    var delta:number = 0
+    let nextIndex = index + 1;
+    if(nextIndex < this.player.results.length){
+      delta = this.player.results[index].elo - this.player.results[nextIndex].elo;
+      //console.log(delta)
+      console.log(Math.sign(delta))
+      if(delta > 0){
+        return delta
+      }
+      else if(delta = 0){
+        return delta
+      }
+      else if(delta < 0) {
+        return delta
+      }
+      else {
+        return "err"
+      }
+    }
+    else {
+      return delta
+    }
+    
+  }
+
+  JeSuisCeil(variable: number,){
+    return Math.floor(variable)+1;
   }
 
   ngOnInit(): void {

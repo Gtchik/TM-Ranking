@@ -21,13 +21,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let result of player.results" >
+        <tr *ngFor="let result of player.results.slice(0,-1); let isIndex = index" >
           <td nzAlign="center">{{ result.tournoi_name }}</td>
-          <td nzAlign="center"> Division ?</td>  
-          <td>{{result.position}}</td>
+          <td nzAlign="center">{{JeSuisCeil(result.position/64)}}</td>
+          <td>{{result.position%64}}</td>
           <td>{{result.position}}</td>
           <td>{{ result.elo }}</td>
-          <td>Delta</td>
+          <td>
+            <span nz-typography nzType="success" *ngIf="createDelta(isIndex)>0"><i nz-icon nzType="up" nzTheme="outline"></i> {{createDelta(isIndex)}}</span>
+            <span nz-typography nzType="danger" *ngIf="createDelta(isIndex)<0"><i nz-icon nzType="down" nzTheme="outline"></i> {{(createDelta(isIndex).toString()).substring(1)}}</span>
+            <span nz-typography nzType="secondary" *ngIf="createDelta(isIndex)==0"><i nz-icon nzType="minus" nzTheme="outline"></i>0</span>
         </tr>
       </tbody>
     </nz-table>
