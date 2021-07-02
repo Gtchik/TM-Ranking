@@ -21,6 +21,7 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { PlayerComponent } from './player/player.component';
 import { SearchComponent } from './search/search.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
 registerLocaleData(fr);
 
@@ -44,7 +45,8 @@ registerLocaleData(fr);
     NzButtonModule,
     NzInputModule,
     NzToolTipModule,
-    NzListModule
+    NzListModule,
+    NzLayoutModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

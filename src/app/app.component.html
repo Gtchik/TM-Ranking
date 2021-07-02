@@ -1,21 +1,26 @@
-<div nz-row>
-  <div nz-col nzSpan="8">
-    <div nz-col nzSpan="20" nzOffset="2">
-      <button nz-button nzType="primary" nzBlock (click)="onNavigate('','')">General ranking</button>
-      <nz-input-group [nzSuffix]="suffixTemplateInfo" [nzPrefix]="prefixTemplateUser">
-        <input type="text" nz-input [(ngModel)]="inputValue" placeholder="Search..." (ngModelChange)="onNavigate('/search/',$event)"/>
-      </nz-input-group>
-      <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
-      <ng-template #suffixTemplateInfo>
-        <i nz-icon nz-tooltip nzTooltipTitle="search a username" *ngIf="!inputValue" nzType="info-circle"></i>
-        <i nz-icon class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="inputValue" (click)="inputValue = null;onNavigate('','')"></i>
-      </ng-template>
-     
-    </div>
-  </div>
-  <div nz-col nzSpan="16">
-    <div nz-col nzSpan="20" nzOffset="2">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<nz-layout class="layout">
+  <nz-header>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal">
+      <button nz-button nzType="primary" class="bouton1menu" (click)="onNavigate('','')">General ranking</button>
+      <div class="input">
+        <nz-input-group [nzSuffix]="suffixTemplateInfo" [nzPrefix]="prefixTemplateUser">
+          <input type="text" nz-input [(ngModel)]="inputValue" placeholder="Search a player..." (ngModelChange)="onNavigate('/search/',$event)"/>
+        </nz-input-group>
+      </div>
+    </ul>
+
+    <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
+    <ng-template #suffixTemplateInfo>
+      <i nz-icon nz-tooltip nzTooltipTitle="search a username" *ngIf="!inputValue" nzType="info-circle"></i>
+      <i nz-icon class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="inputValue" (click)="inputValue = null;onNavigate('','')"></i>
+    </ng-template>
+
+  </nz-header>
+
+  <nz-content>
+    <router-outlet></router-outlet>
+  </nz-content>
+
+  <nz-footer>©2020-2021 By Guillaume T. & Léo "Askej" G.</nz-footer>
+</nz-layout>
