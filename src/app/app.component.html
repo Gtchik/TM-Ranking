@@ -12,7 +12,7 @@
 
     <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
     <ng-template #suffixTemplateInfo>
-      <i nz-icon nz-tooltip nzTooltipTitle="search a username" *ngIf="!inputValue" nzType="info-circle"></i>
+      <i nz-icon nz-tooltip nzTooltipTitle="search an username" *ngIf="!inputValue" nzType="info-circle"></i>
       <i nz-icon class="ant-input-clear-icon" nzTheme="fill" nzType="close-circle" *ngIf="inputValue" (click)="inputValue = null;onNavigate('','')"></i>
     </ng-template>
 
